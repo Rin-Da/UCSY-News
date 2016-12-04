@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="kandroid-0.6.14">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.pawegio.kandroid/kandroid/0.6.14/res" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.pawegio.kandroid/kandroid/0.6.14/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$APPLICATION_HOME_DIR$/gradle/wrapper/dists/gradle-2.4-all/caches/modules-2/files-2.1/com.pawegio.kandroid/kandroid/0.6.14/c994105f177c32c3b025aebc2b70fbe7add0be1f/kandroid-0.6.14-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

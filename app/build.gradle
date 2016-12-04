@@ -1,16 +1,20 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'realm-android'
 
+def global_config = rootProject.extensions.ext
 android {
-  compileSdkVersion 25
-  buildToolsVersion "25.0.0"
+  compileSdkVersion rootProject.extensions.ext.androidCompileSdkVersion
+  buildToolsVersion rootProject.extensions.ext.androidBuildToolsVersion
   defaultConfig {
-    applicationId "io.github.rin_da.ucsynews"
-    minSdkVersion 16
-    targetSdkVersion 25
-    versionCode 1
-    versionName "1.0"
+    applicationId rootProject.extensions.ext.applicationId
+    minSdkVersion rootProject.extensions.ext.androidMinSdkVersion
+    targetSdkVersion rootProject.extensions.ext.androidTargetSdkVersion
+    versionCode rootProject.extensions.ext.versionCode
+    versionName rootProject.extensions.ext.versionName
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    vectorDrawables.useSupportLibrary = true
   }
   buildTypes {
     release {
@@ -22,14 +26,51 @@ android {
     main.java.srcDirs += 'src/main/kotlin'
   }
 }
+kapt {
+  generateStubs = true
+}
 
 dependencies {
-  compile fileTree(dir: 'libs', include: ['*.jar'])
-  androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+  def ui = global_config.ui_dependencies
+  def test = global_config.test_dependencies
+  def core = global_config.core_dependencies
+  def firebase = global_config.firebase_dependencies
+  def gms = global_config.gms_dependencies
+  compile fileTree(include: ['*.jar'], dir: 'libs')
+  androidTestCompile(test.espresso, {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
-  compile 'com.android.support:appcompat-v7:25.0.1'
-  testCompile 'junit:junit:4.12'
+  compile ui.appcompat
+  testCompile test.junit
+  compile ui.support_design
+  compile ui.support_v4
+  compile ui.cardview
+  compile ui.anko_cardview
+  compile ui.anko
+  compile ui.anko_appcompat
+  compile ui.anko_design
+  compile ui.anko_recycler_view
+  compile ui.recycler_view
+  compile ui.circle_image_view
+  compile ui.glide
+  compile ui.florent37
+  compile ui.font
+  compile ui.fancy_btn
+  compile ui.text_drawable
+  compile ui.viewpager_anim
+  compile ui.constraint
+  compile firebase.core
+  compile firebase.auth
+  provided core.glassfish
+  kapt core.dagger2_compiler
+  compile core.kandroid
+  compile core.dagger2
+  compile core.retrofit2
+  compile core.retrofit2_gson
+  compile core.gson
+  compile core.rxkotlin
+  compile core.rxjava
+  compile  gms.auth
   compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 repositories {

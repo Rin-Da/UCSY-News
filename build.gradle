@@ -1,5 +1,5 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-
+apply from: 'config/dependencies.gradle'
 buildscript {
   ext.kotlin_version = '1.0.4'
   repositories {
@@ -8,7 +8,7 @@ buildscript {
   dependencies {
     classpath 'com.android.tools.build:gradle:2.2.2'
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-
+    classpath "io.realm:realm-gradle-plugin:2.2.0"
     // NOTE: Do not place your application dependencies here; they belong
     // in the individual module build.gradle files
   }
@@ -18,7 +18,17 @@ allprojects {
   repositories {
     jcenter()
   }
+  ext {
+    majorVersion = 0
+    minorVersion = 0
+    patch = 1
+    versionCode = majorVersion * 10000 + minorVersion * 1000 + patch * 100
+    versionName = "$majorVersion . $minorVersion . $patch"
+    applicationId = "io.github.rin_da.ucsynews"
+  }
 }
+
+
 
 task clean(type: Delete) {
   delete rootProject.buildDir
