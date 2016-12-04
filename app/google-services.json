@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "425641031396",
+    "firebase_url": "https://ucsy-news.firebaseio.com",
+    "project_id": "ucsy-news",
+    "storage_bucket": "ucsy-news.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:425641031396:android:6b94b35a5f18acb0",
+        "android_client_info": {
+          "package_name": "io.github.rin_da.ucsynews"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "425641031396-kb6js8d9l9rs43lur2mh3n0tt6gnjinu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.github.rin_da.ucsynews",
+            "certificate_hash": "741A44496426FDFA465BC4A28B73415D3F3C2ADC"
+          }
+        },
+        {
+          "client_id": "425641031396-vrr5qioqqu3vsepeu5pf221c3v88u1vt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCk6UaMnm2uvfWH1fGFBYkMJ_r3PU_Ya8E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "425641031396-vrr5qioqqu3vsepeu5pf221c3v88u1vt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
