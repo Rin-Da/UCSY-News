@@ -10,7 +10,8 @@ import io.github.rin_da.ucsynews.R
 import io.github.rin_da.ucsynews.presentation.abstract.view.AbstractView
 import io.github.rin_da.ucsynews.presentation.base.model.BaseModel
 import io.github.rin_da.ucsynews.presentation.base.ui.cardBackgroundWhite
-import io.github.rin_da.ucsynews.presentation.base.ui.fontAwesome
+import io.github.rin_da.ucsynews.presentation.base.ui.intOf
+import io.github.rin_da.ucsynews.presentation.base.ui.mount
 import io.github.rin_da.ucsynews.presentation.login.activity.LoginActivity
 import org.jetbrains.anko.*
 import org.jetbrains.anko.cardview.v7.cardView
@@ -21,60 +22,22 @@ import org.jetbrains.anko.design.floatingActionButton
  */
 
 class LoginView : AbstractView<BaseModel>(), AnkoComponent<LoginActivity> {
-    private val USER_VIEW_ID = 1
-    private val CARD_ID = 2
+
 
     override fun createView(ui: AnkoContext<LoginActivity>): View {
+        val loginHead = UserHeadView()
         with(ui) {
             relativeLayout {
-                val user_view = fontAwesome {
-                    id = USER_VIEW_ID
-                    setBackgroundColor(Color.parseColor("#5bffffff"))
-                    setRadius(50)
-                    setFontIconSize(40)
-                    setIconResource("\uf007")
-                }.lparams(width = dp(80), height = dp(80)) {
+                mount(loginHead).lparams(width = dp(intOf(R.integer.login_user_head_dimen)), height = dp(intOf(R.integer.login_user_head_dimen))) {
                     centerHorizontally()
-                    topMargin = dp(60)
+                    topMargin = dp(intOf(R.integer.login_user_head_top_margin))
                 }
-                val card = cardView {
-                    id = CARD_ID
-                    cardElevation = dp(5).toFloat()
+                cardView {
+                    id = R.id.login_card_id
+                    cardElevation = dp(intOf(R.integer.login_cardview_elevation)).toFloat()
                     cardBackgroundColor = cardBackgroundWhite
                     verticalLayout {
-                        linearLayout {
-
-                            fontAwesome {
-                                setBackgroundColor(Color.parseColor("#4770DD"))
-                                setRadius(300)
-                                setFontIconSize(30);
-                                setIconResource("\uf09a")
-                            }.lparams(width = dp(70), height = dp(70)) {
-                                topMargin = dp(30)
-                                leftMargin = dp(45)
-                            }
-                            fontAwesome {
-                                setBackgroundColor(Color.parseColor("#d62a0a"))
-                                setRadius(300)
-                                setFontIconSize(30);
-                                setIconResource("\uf0d5")
-                            }.lparams(width = dp(70), height = dp(70)) {
-                                topMargin = dp(30)
-                                leftMargin = dp(25)
-                            }
-                            fontAwesome {
-                                setBackgroundColor(ContextCompat.getColor(context, R.color.colorAccent))
-                                setRadius(300)
-                                setFontIconSize(30);
-                                setIconResource("\uf234")
-                            }.lparams(width = dp(70), height = dp(70)) {
-                                topMargin = dp(30)
-                                leftMargin = dp(25)
-
-                            }
-                        }.lparams(width = matchParent, height = dp(105)) {
-
-                        }
+                        mount(SocialHeadsView()).lparams(width = matchParent, height = dp(105))
                         textView {
                             text = "Email"
                             textSize = sp(7).toFloat()
@@ -118,18 +81,16 @@ class LoginView : AbstractView<BaseModel>(), AnkoComponent<LoginActivity> {
 
                     }.layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT)
                 }.lparams(width = dp(350), height = dp(385)) {
-                    below(USER_VIEW_ID)
+                    below(R.id.login_user_view)
                     centerHorizontally()
                     topMargin = dp(45)
                 }
-
                 floatingActionButton {
                     size = FloatingActionButton.SIZE_NORMAL
                     setImageResource(R.drawable.ic_check_black_24dp)
-
                     setColorFilter(Color.WHITE)
                 }.lparams(width = dp(64), height = dp(64)) {
-                    below(CARD_ID)
+                    below(R.id.login_card_id)
                     topMargin = dp(-30)
                     centerHorizontally()
                 }

@@ -2,4 +2,17 @@
 	<!-- Default screen margins, per the Android Design guidelines. -->
 	<dimen name="activity_horizontal_margin">16dp</dimen>
 	<dimen name="activity_vertical_margin">16dp</dimen>
+
+	<!--  Login User Head -->
+	<integer name="login_user_head_radius">50</integer>
+	<integer name="login_user_head_font_icon_size">40</integer>
+	<integer name="login_user_head_dimen">80</integer>
+	<integer name="login_user_head_top_margin">60</integer>
+
+	<!-- Login CardView -->
+	<integer name="login_cardview_elevation">5</integer>
+
+	<!-- Social Heads -->
+	<integer name="login_social_heads_dimens">300</integer>
+
 </resources>

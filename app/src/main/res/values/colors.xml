@@ -4,4 +4,6 @@
 	<color name="colorPrimaryDark">#303F9F</color>
 	<color name="colorAccent">#FF4081</color>
 	<color name="loginBtnColor">#FFB3B3</color>
+	<color name="loginUserHeadColor">#5bffffff</color>
+	<color name="loginFacebookColor">#4770DD</color>
 </resources>

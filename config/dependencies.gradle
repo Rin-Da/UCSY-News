@@ -37,9 +37,7 @@ ext {
                            auth: "com.google.firebase:firebase-auth:${FIREBASE}"]
 
 
- gms_dependencies = [
-     auth: "com.google.android.gms:play-services-auth:$GMS"
- ]
+  gms_dependencies = [auth: "com.google.android.gms:play-services-auth:$GMS"]
 
 
   test_dependencies = [espresso: "com.android.support.test.espresso:espresso-core:$ESPRESSO",
