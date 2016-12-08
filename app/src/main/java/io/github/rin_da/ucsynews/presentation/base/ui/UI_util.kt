@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.support.v4.content.ContextCompat
+import android.view.View
 import android.view.ViewGroup
 import android.view.ViewManager
 import mehdi.sakout.fancybuttons.FancyButton
@@ -27,12 +28,14 @@ fun AnkoContext<*>.intOf(id: Int): Int = resources.getInteger(id)
 fun AnkoContext<*>.stringOf(id: Int): String = resources.getString(id)
 
 fun <T : AnkoComponent<out Context>> ViewGroup.mount(component: T, onMount: (T.() -> Unit)? = null) =
+
         context.render(component as AnkoComponent<Context>).apply {
             addView(this)
             onMount?.invoke(component)
         }
 
-inline fun Context.render(component: AnkoComponent<out Context>) =
+
+inline fun Context.render(component: AnkoComponent<out Context>): View =
         (component as AnkoComponent<Context>).createView(AnkoContext.createReusable(this))
 
 val cardBackgroundWhite = ColorStateList(states, colors)

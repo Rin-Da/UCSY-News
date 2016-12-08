@@ -28,16 +28,17 @@ class LoginView : AbstractView<BaseModel>(), AnkoComponent<LoginActivity> {
         val loginHead = UserHeadView()
         with(ui) {
             relativeLayout {
-                mount(loginHead).lparams(width = dp(intOf(R.integer.login_user_head_dimen)), height = dp(intOf(R.integer.login_user_head_dimen))) {
-                    centerHorizontally()
-                    topMargin = dp(intOf(R.integer.login_user_head_top_margin))
-                }
+                mount(loginHead).
+                        lparams(width = dp(intOf(R.integer.login_user_head_dimen)), height = dp(intOf(R.integer.login_user_head_dimen))) {
+                            centerHorizontally()
+                            topMargin = dp(intOf(R.integer.login_user_head_top_margin))
+                        }
                 cardView {
                     id = R.id.login_card_id
                     cardElevation = dp(intOf(R.integer.login_cardview_elevation)).toFloat()
                     cardBackgroundColor = cardBackgroundWhite
                     verticalLayout {
-                        mount(SocialHeadsView()).lparams(width = matchParent, height = dp(105))
+                        mount(SocialHeadsView()).lparams(width = matchParent, height = dp(intOf(R.integer.login_social_heads_height)))
                         textView {
                             text = "Email"
                             textSize = sp(7).toFloat()

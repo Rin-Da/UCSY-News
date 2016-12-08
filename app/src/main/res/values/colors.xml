@@ -6,4 +6,5 @@
 	<color name="loginBtnColor">#FFB3B3</color>
 	<color name="loginUserHeadColor">#5bffffff</color>
 	<color name="loginFacebookColor">#4770DD</color>
+	<color name="loginGoogleColor">#d62a0a</color>
 </resources>

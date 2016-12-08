@@ -1,4 +1,7 @@
 <resources>
 	<string name="app_name">UcsyNews</string>
 	<string name="login_user_head">\uf007</string>
+	<string name="awesome_facebook">\uf09a</string>
+	<string name="awesome_google">\uf0d5</string>
+	<string name="awesome_sign_up">\uf234</string>
 </resources>
