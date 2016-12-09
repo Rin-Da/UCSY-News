@@ -39,6 +39,7 @@ class LoginView : AbstractView<BaseModel>(), AnkoComponent<LoginActivity> {
                     cardBackgroundColor = cardBackgroundWhite
                     verticalLayout {
                         mount(SocialHeadsView()).lparams(width = matchParent, height = dp(intOf(R.integer.login_social_heads_height)))
+
                         textView {
                             text = "Email"
                             textSize = sp(7).toFloat()
