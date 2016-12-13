@@ -23,8 +23,7 @@ ext {
   final GLIDE = '3.7.0'
   final GSON = '2.4'
   final GSON_CONVERTOR = '2.0.2'
-  final RXJAVA = '1.1.6'
-  final RXKOTLIN = '0.60.0'
+  final RXJAVA = '2.0.2'
   final MATERIAL_TEXT_FIELD = '1.0.5'
   final CIRCLE_IMAGE_VIEW = '2.0.0'
   final VIEW_PAGER_TRANSFORMER = '1.0.1'
@@ -37,9 +36,10 @@ ext {
   final SOCIAL_LOGIN = '1.1.3'
   final FIREBASE_UI = '1.0.1'
 
-  firebase_dependencies = [core: "com.google.firebase:firebase-core:${FIREBASE}",
-                           auth: "com.google.firebase:firebase-auth:${FIREBASE}",
-                           ui  : "com.firebaseui:firebase-ui-auth:${FIREBASE_UI}"]
+  firebase_dependencies = [core    : "com.google.firebase:firebase-core:${FIREBASE}",
+                           auth    : "com.google.firebase:firebase-auth:${FIREBASE}",
+                           ui      : "com.firebaseui:firebase-ui-auth:${FIREBASE_UI}",
+                           database: "com.google.firebase:firebase-database:${FIREBASE}"]
 
 
   gms_dependencies = [auth: "com.google.android.gms:play-services-auth:$GMS"]
@@ -56,8 +56,7 @@ ext {
                        retrofit2       : "com.squareup.retrofit2:retrofit:${RETROFIT}",
                        retrofit2_gson  : "com.squareup.retrofit2:converter-gson:${GSON_CONVERTOR}",
                        gson            : "com.google.code.gson:gson:${GSON}",
-                       rxjava          : "io.reactivex:rxjava:${RXJAVA}",
-                       rxkotlin        : "io.reactivex:rxkotlin:${RXKOTLIN}",
+                       rxjava          : "io.reactivex.rxjava2:rxjava:${RXJAVA}",
                        kandroid        : "com.pawegio.kandroid:kandroid:$KANDROID@aar",
                        social          : "com.github.jaychang0917:SocialLoginManager:$SOCIAL_LOGIN"]
 

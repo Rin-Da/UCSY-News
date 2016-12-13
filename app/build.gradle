@@ -69,14 +69,12 @@ dependencies {
   compile firebase.core
   compile firebase.auth
   compile firebase.ui
+  compile firebase.database
   provided core.glassfish
   kapt core.dagger2_compiler
   compile core.kandroid
   compile core.dagger2
-  compile core.retrofit2
-  compile core.retrofit2_gson
   compile core.gson
-  compile core.rxkotlin
   compile core.rxjava
   compile gms.auth
   compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
