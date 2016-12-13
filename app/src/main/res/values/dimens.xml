@@ -13,6 +13,9 @@
 	<integer name="login_cardview_elevation">5</integer>
 
 	<!-- Social Heads -->
+	<integer name="login_error_dimens">76</integer>
+	<integer name="login_error_text_width">120</integer>
+	<integer name="login_error_text_margin">8</integer>
 	<integer name="login_social_heads_dimens">250</integer>
 	<integer name="login_social_heads_height">105</integer>
 	<integer name="login_social_heads_font_size">20</integer>

@@ -16,6 +16,9 @@ android {
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     vectorDrawables.useSupportLibrary = true
   }
+  dexOptions {
+    jumboMode true
+  }
   buildTypes {
     release {
       minifyEnabled false
@@ -28,6 +31,10 @@ android {
 }
 kapt {
   generateStubs = true
+}
+repositories {
+  maven { url 'https://maven.fabric.io/public' }
+  mavenCentral()
 }
 
 dependencies {
@@ -61,6 +68,7 @@ dependencies {
   compile ui.constraint
   compile firebase.core
   compile firebase.auth
+  compile firebase.ui
   provided core.glassfish
   kapt core.dagger2_compiler
   compile core.kandroid
@@ -73,6 +81,8 @@ dependencies {
   compile gms.auth
   compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
-repositories {
-  mavenCentral()
-}
+
+
+apply plugin: 'com.google.gms.google-services'
+
+

@@ -4,4 +4,6 @@
 	<string name="awesome_facebook">\uf09a</string>
 	<string name="awesome_google">\uf0d5</string>
 	<string name="awesome_sign_up">\uf234</string>
+	<string name="email">Email</string>
+	<string name="no_connection">Sorry \, we can\'t connect to server</string>
 </resources>
