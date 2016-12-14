@@ -6,4 +6,5 @@
 	<string name="awesome_sign_up">\uf234</string>
 	<string name="email">Email</string>
 	<string name="no_connection">Sorry \, we can\'t connect to server</string>
+	<string name="title_activity_test">Test</string>
 </resources>

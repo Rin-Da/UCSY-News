@@ -23,5 +23,6 @@
 	<integer name="login_social_heads_top_margin">30</integer>
 	<integer name="login_social_heads_left_margin">25</integer>
 	<integer name="login_social_heads_left_large_margin">45</integer>
+	<dimen name="fab_margin">16dp</dimen>
 
 </resources>

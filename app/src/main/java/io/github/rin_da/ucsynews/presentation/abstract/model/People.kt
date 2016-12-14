@@ -7,13 +7,16 @@ package io.github.rin_da.ucsynews.presentation.abstract.model
 public class People {
     var uid: String = ""
     var profile_pic: String? = null
-    var userNme: String = ""
+    var userName: String = ""
 
     constructor()
 
-    constructor(uid: String, userNme: String) {
+
+
+    constructor(profile_pic: String? = "", uid: String, userName: String) {
+        this.profile_pic = profile_pic
         this.uid = uid
-        this.userNme = userNme
+        this.userName = userName
     }
 
 }

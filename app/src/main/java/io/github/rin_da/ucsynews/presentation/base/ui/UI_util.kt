@@ -1,6 +1,7 @@
 package io.github.rin_da.ucsynews.presentation.base.ui
 
 import android.content.Context
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
@@ -11,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewManager
 import android.widget.TextView
+import io.github.rin_da.ucsynews.presentation.Test
 import mehdi.sakout.fancybuttons.FancyButton
 import org.jetbrains.anko.AnkoComponent
 import org.jetbrains.anko.AnkoContext
@@ -26,6 +28,8 @@ const val HIDE = View.GONE
 fun View.show(){
     visibility = SHOW
 }
+
+val testIntent = fun(context: Context) = Intent(context, Test::class.java)
 
 fun View.hide(){
     visibility = HIDE

@@ -14,7 +14,7 @@ import javax.inject.Singleton
 @Component(modules = arrayOf(ApplicationModule::class))
 interface ApplicationComponent {
     fun context(): Context
-    fun dataSource():DataBaseSource
+    fun dataSource(): DataBaseSource
     fun inject(activity: BaseActivity)
 
 }
