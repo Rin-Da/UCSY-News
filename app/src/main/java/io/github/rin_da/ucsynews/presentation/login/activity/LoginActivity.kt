@@ -7,6 +7,7 @@ import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.ui.ResultCodes
 import com.google.firebase.auth.FirebaseAuth
 import io.github.rin_da.ucsynews.R
+import io.github.rin_da.ucsynews.data.source.DataBaseSource
 import io.github.rin_da.ucsynews.presentation.abstract.model.People
 import io.github.rin_da.ucsynews.presentation.base.activity.BaseActivity
 import io.github.rin_da.ucsynews.presentation.base.ui.isNetworkConnected
@@ -18,6 +19,7 @@ import io.reactivex.CompletableObserver
 import io.reactivex.disposables.Disposable
 import org.jetbrains.anko.setContentView
 import java.util.*
+import javax.inject.Inject
 
 const val RC_SIGN_IN = 111
 const val GOOGLE_SIGN_IN = 999
@@ -25,6 +27,7 @@ const val GOOGLE_SIGN_IN = 999
 
 class LoginActivity : BaseActivity() {
     var view: LoginView = LoginView(this)
+    @Inject lateinit var source: DataBaseSource
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

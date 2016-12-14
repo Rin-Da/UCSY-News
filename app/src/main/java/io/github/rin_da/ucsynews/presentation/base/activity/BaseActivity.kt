@@ -3,9 +3,8 @@ package io.github.rin_da.ucsynews.presentation.base.activity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import io.github.rin_da.ucsynews.UCSYNewsApplication
-import io.github.rin_da.ucsynews.data.source.DataBaseSource
 import io.github.rin_da.ucsynews.di.components.ApplicationComponent
-import javax.inject.Inject
+import io.github.rin_da.ucsynews.di.modules.ActivityModule
 
 /**
  * Created by user on 12/13/16.
@@ -13,7 +12,7 @@ import javax.inject.Inject
 
 open class BaseActivity : AppCompatActivity(), IActivity {
     protected lateinit var applicationComponent: ApplicationComponent
-    @Inject lateinit var source: DataBaseSource
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,5 +20,6 @@ open class BaseActivity : AppCompatActivity(), IActivity {
         applicationComponent.inject(this)
     }
 
+    fun activity():ActivityModule = ActivityModule(this)
 
 }
