@@ -23,6 +23,11 @@
 	<integer name="login_social_heads_top_margin">30</integer>
 	<integer name="login_social_heads_left_margin">25</integer>
 	<integer name="login_social_heads_left_large_margin">45</integer>
+
 	<dimen name="fab_margin">16dp</dimen>
+	<!-- Default screen margins, per the Android Design guidelines. -->
+	<dimen name="nav_header_vertical_spacing">16dp</dimen>
+	<dimen name="nav_header_height">160dp</dimen>
+	<dimen name="home_profile_image_dimens">48dp</dimen>
 
 </resources>

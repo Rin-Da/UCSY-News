@@ -7,4 +7,10 @@
 	<string name="email">Email</string>
 	<string name="no_connection">Sorry \, we can\'t connect to server</string>
 	<string name="title_activity_test">Test</string>
+	<string name="title_activity_home">HomeActivity</string>
+	
+	<string name="navigation_drawer_open">Open navigation drawer</string>
+	<string name="navigation_drawer_close">Close navigation drawer</string>
+	
+	<string name="action_settings">Settings</string>
 </resources>

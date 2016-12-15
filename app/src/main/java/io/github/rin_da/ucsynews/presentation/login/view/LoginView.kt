@@ -7,19 +7,15 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import com.pawegio.kandroid.dp
 import io.github.rin_da.ucsynews.R
-import io.github.rin_da.ucsynews.domain.usecase.login.LoginUseCase
 import io.github.rin_da.ucsynews.presentation.base.ui.*
 import io.github.rin_da.ucsynews.presentation.login.activity.LoginActivity
 import org.jetbrains.anko.*
-import javax.inject.Inject
-import javax.inject.Named
 
 /**
  * Created by user on 12/4/16.
  */
 
 class LoginView(var ankoActivity: LoginActivity) : AnkoComponent<LoginActivity> {
-
 
 
     lateinit var error_text: TextView
@@ -40,12 +36,14 @@ class LoginView(var ankoActivity: LoginActivity) : AnkoComponent<LoginActivity> 
                     }
                     appCompatImageView {
                         imageResource = R.drawable.ic_sad
+                        setColorFilter(colorOf(R.color.yellow))
                     }.lparams(width = dp(intOf(R.integer.login_error_dimens)), height = dp(intOf(R.integer.login_error_dimens))) {
 
                     }
                     error_text = textView {
                         setRegularFont()
                         gravity = Gravity.CENTER
+                        setTextColor(colorOf(android.R.color.white))
                     }.lparams(width = dp(intOf(R.integer.login_error_text_width)), height = wrapContent) {
                         topMargin = dp(intOf(R.integer.login_error_text_margin))
                     }
