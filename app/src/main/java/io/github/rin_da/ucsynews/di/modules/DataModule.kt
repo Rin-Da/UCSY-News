@@ -2,8 +2,6 @@ package io.github.rin_da.ucsynews.di.modules
 
 import dagger.Module
 import dagger.Provides
-import io.github.rin_da.ucsynews.domain.usecase.login.BaseLoginUseCase
-import io.github.rin_da.ucsynews.domain.usecase.login.LoginUseCase
 import javax.inject.Named
 
 /**

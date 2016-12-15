@@ -2,7 +2,6 @@ package io.github.rin_da.ucsynews.presentation.login.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.ui.ResultCodes
 import com.google.firebase.auth.FirebaseAuth
@@ -40,7 +39,7 @@ class LoginActivity : BaseActivity() {
                 view.setText(getString(R.string.no_connection))
             }
         } else {
-            source.addUserIfExists(People(uid = FirebaseAuth.getInstance().currentUser!!.uid, userName = FirebaseAuth.getInstance().currentUser!!.displayName!!)).subscribe(CompletableSubscriber())
+            go2Test()
         }
     }
 
@@ -66,7 +65,7 @@ class LoginActivity : BaseActivity() {
                 return
             }
             if (resultCode == RESULT_CANCELED) {
-                Toast.makeText(LoginActivity@this, "Result Cancel", Toast.LENGTH_LONG).show()
+                view.setText(getString(R.string.no_connection))
                 return
             }
             if (resultCode == ResultCodes.RESULT_NO_NETWORK) {
@@ -89,6 +88,7 @@ class LoginActivity : BaseActivity() {
 
         override fun onError(e: Throwable?) {
             view.setText(getString(R.string.no_connection))
+            FirebaseAuth.getInstance().signOut()
         }
 
         override fun onSubscribe(d: Disposable?) {

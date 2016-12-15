@@ -7,12 +7,9 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import com.pawegio.kandroid.dp
 import io.github.rin_da.ucsynews.R
-import io.github.rin_da.ucsynews.domain.usecase.login.LoginUseCase
 import io.github.rin_da.ucsynews.presentation.base.ui.*
 import io.github.rin_da.ucsynews.presentation.login.activity.LoginActivity
 import org.jetbrains.anko.*
-import javax.inject.Inject
-import javax.inject.Named
 
 /**
  * Created by user on 12/4/16.
