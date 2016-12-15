@@ -2,12 +2,12 @@ package io.github.rin_da.ucsynews.presentation.login.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.ui.ResultCodes
 import com.google.firebase.auth.FirebaseAuth
 import io.github.rin_da.ucsynews.R
 import io.github.rin_da.ucsynews.data.source.DataBaseSource
+import io.github.rin_da.ucsynews.di.components.DaggerDataComponent
 import io.github.rin_da.ucsynews.presentation.abstract.model.People
 import io.github.rin_da.ucsynews.presentation.base.activity.BaseActivity
 import io.github.rin_da.ucsynews.presentation.base.ui.isNetworkConnected
@@ -32,7 +32,7 @@ class LoginActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         view.setContentView(this)
-
+        DaggerDataComponent.builder().activityModule(activity()).applicationComponent(applicationComponent).build().inject(this)
         if (FirebaseAuth.getInstance().currentUser == null) {
             if (isNetworkConnected()) {
                 login()
@@ -40,7 +40,13 @@ class LoginActivity : BaseActivity() {
                 view.setText(getString(R.string.no_connection))
             }
         } else {
-            source.addUserIfExists(People(uid = FirebaseAuth.getInstance().currentUser!!.uid, userName = FirebaseAuth.getInstance().currentUser!!.displayName!!)).subscribe(CompletableSubscriber())
+            if (isNetworkConnected()) {
+                source.addUserIfExists(People(uid = FirebaseAuth.getInstance().currentUser!!.uid, userName = FirebaseAuth.getInstance().currentUser!!.displayName!!)).subscribe(CompletableSubscriber())
+            } else {
+                go2Test()
+                finish()
+            }
+
         }
     }
 
@@ -66,7 +72,8 @@ class LoginActivity : BaseActivity() {
                 return
             }
             if (resultCode == RESULT_CANCELED) {
-                Toast.makeText(LoginActivity@this, "Result Cancel", Toast.LENGTH_LONG).show()
+                view.setText(getString(R.string.no_connection))
+                FirebaseAuth.getInstance().signOut()
                 return
             }
             if (resultCode == ResultCodes.RESULT_NO_NETWORK) {
@@ -85,6 +92,7 @@ class LoginActivity : BaseActivity() {
     inner class CompletableSubscriber : CompletableObserver {
         override fun onComplete() {
             go2Test()
+            finish()
         }
 
         override fun onError(e: Throwable?) {
