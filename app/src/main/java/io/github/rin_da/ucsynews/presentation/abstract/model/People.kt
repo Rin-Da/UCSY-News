@@ -9,6 +9,7 @@ public class People {
     var profile_pic: String? = null
     var userName: String = ""
 
+
     constructor()
 
 

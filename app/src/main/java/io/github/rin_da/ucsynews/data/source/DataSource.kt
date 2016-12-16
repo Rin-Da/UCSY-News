@@ -3,6 +3,8 @@ package io.github.rin_da.ucsynews.data.source
 import io.github.rin_da.ucsynews.data.source.local.LocalBaseSource
 import io.github.rin_da.ucsynews.data.source.local.RemoteBaseSource
 import io.github.rin_da.ucsynews.presentation.abstract.model.People
+import io.github.rin_da.ucsynews.presentation.abstract.model.Post
+import io.reactivex.Completable
 import javax.inject.Inject
 
 /**
@@ -16,6 +18,8 @@ class DataSource : DataBaseSource {
     @Inject constructor() {
 
     }
+
+    override fun post(post: Post, uuid: String): Completable = remote.post(post, uuid)
 
     override fun addUserIfExists(people: People)
             = remote.addPeopleIfNotExists(people)

@@ -30,6 +30,8 @@
 				android:label="@string/title_activity_home"
 				android:theme="@style/LoginTheme">
 		</activity>
+		<activity android:name=".presentation.post.activity.PostActivity">
+		</activity>
 	</application>
 
 </manifest>

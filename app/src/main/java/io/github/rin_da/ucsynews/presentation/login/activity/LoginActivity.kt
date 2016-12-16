@@ -60,7 +60,7 @@ class LoginActivity : BaseActivity() {
                 AuthUI.getInstance().createSignInIntentBuilder().setProviders(Arrays.asList(AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build(),
                         AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build(),
                         AuthUI.IdpConfig.Builder(AuthUI.FACEBOOK_PROVIDER).build(),
-                        AuthUI.IdpConfig.Builder(AuthUI.TWITTER_PROVIDER).build())).setIsSmartLockEnabled(true).build(),
+                        AuthUI.IdpConfig.Builder(AuthUI.TWITTER_PROVIDER).build())).setIsSmartLockEnabled(false).build(),
                 RC_SIGN_IN)
     }
 

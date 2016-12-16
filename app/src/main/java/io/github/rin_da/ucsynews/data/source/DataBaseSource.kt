@@ -2,6 +2,7 @@ package io.github.rin_da.ucsynews.data.source
 
 import io.github.rin_da.ucsynews.data.source.base.BaseSource
 import io.github.rin_da.ucsynews.presentation.abstract.model.People
+import io.github.rin_da.ucsynews.presentation.abstract.model.Post
 import io.reactivex.Completable
 
 /**
@@ -10,4 +11,5 @@ import io.reactivex.Completable
 
 abstract  class DataBaseSource:BaseSource{
     abstract fun addUserIfExists(people: People):Completable
+    abstract fun post(post:Post,uuid:String):Completable
 }

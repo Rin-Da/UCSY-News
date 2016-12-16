@@ -25,15 +25,16 @@ import org.jetbrains.anko.resources
 
 const val SHOW = View.VISIBLE
 const val HIDE = View.GONE
-fun View.show(){
+fun View.show() {
     visibility = SHOW
 }
 
 val testIntent = fun(context: Context) = Intent(context, Test::class.java)
 
-fun View.hide(){
+fun View.hide() {
     visibility = HIDE
 }
+
 var states = arrayOf(intArrayOf(android.R.attr.state_enabled), // enabled
         intArrayOf(-android.R.attr.state_enabled), // disabled
         intArrayOf(-android.R.attr.state_checked), // unchecked
@@ -42,6 +43,14 @@ var states = arrayOf(intArrayOf(android.R.attr.state_enabled), // enabled
 
 fun TextView.setRegularFont() {
     this.typeface = Typeface.createFromAsset(context.assets, "fonts/AvenirNext-Medium.ttf")
+}
+
+fun TextView.setThinFont() {
+    this.typeface = Typeface.createFromAsset(context.assets, "fonts/Roboto-Thin.ttf")
+}
+
+fun TextView.setDemiBold() {
+    this.typeface = Typeface.createFromAsset(context.assets, "fonts/AvenirNext-DemiBold.ttf")
 }
 
 var colors = intArrayOf(Color.WHITE, Color.WHITE, Color.WHITE, Color.WHITE)

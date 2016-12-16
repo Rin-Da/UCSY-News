@@ -62,6 +62,7 @@ dependencies {
   compile ui.glide
   compile ui.florent37
   compile ui.font
+  compile ui.palette
   compile ui.fancy_btn
   compile ui.text_drawable
   compile ui.viewpager_anim
