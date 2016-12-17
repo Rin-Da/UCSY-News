@@ -12,4 +12,5 @@ import io.reactivex.Completable
 abstract  class DataBaseSource:BaseSource{
     abstract fun addUserIfExists(people: People):Completable
     abstract fun post(post:Post,uuid:String):Completable
+    abstract fun getUser():String?
 }

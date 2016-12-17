@@ -6,9 +6,8 @@ import io.github.rin_da.ucsynews.data.source.base.BaseSource
  * Created by user on 12/13/16.
  */
 
-abstract  class LocalBaseSource:BaseSource{
+abstract class LocalBaseSource : BaseSource {
 
-
-
-
+    abstract fun getUserPreferences(): String?
+    abstract fun saveUserPreferences(uuid: String)
 }

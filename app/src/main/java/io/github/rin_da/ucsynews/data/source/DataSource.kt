@@ -24,6 +24,9 @@ class DataSource : DataBaseSource {
     override fun addUserIfExists(people: People)
             = remote.addPeopleIfNotExists(people)
 
+    override fun getUser(): String?
+            = localSource.getUserPreferences()
+
     override fun toString(): String {
         return "DataSource(localSource=$localSource)"
     }

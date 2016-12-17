@@ -41,10 +41,20 @@ class LoginActivity : BaseActivity() {
             }
         } else {
             if (isNetworkConnected()) {
-                source.addUserIfExists(People(uid = FirebaseAuth.getInstance().currentUser!!.uid, userName = FirebaseAuth.getInstance().currentUser!!.displayName!!)).subscribe(CompletableSubscriber())
+                if (source.getUser() == null) {
+                    source.addUserIfExists(People(uid = FirebaseAuth.getInstance().currentUser!!.uid, userName = FirebaseAuth.getInstance().currentUser!!.displayName!!)).subscribe(CompletableSubscriber())
+                } else {
+                    go2Test()
+                    finish()
+                }
             } else {
-                go2Test()
-                finish()
+                if (source.getUser() != null) {
+                    go2Test()
+                    finish()
+                } else {
+                    view.setText(getString(R.string.no_connection))
+                }
+
             }
 
         }

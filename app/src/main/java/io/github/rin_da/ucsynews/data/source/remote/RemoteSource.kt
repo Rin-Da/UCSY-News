@@ -1,12 +1,12 @@
 package io.github.rin_da.ucsynews.data.source.local
 
-import android.util.Log
+import android.content.SharedPreferences
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.pawegio.kandroid.e
 import io.github.rin_da.ucsynews.data.PEOPLE
 import io.github.rin_da.ucsynews.data.POST
-import io.github.rin_da.ucsynews.data.addEvent
+import io.github.rin_da.ucsynews.data.USERS
 import io.github.rin_da.ucsynews.data.isValueExists
 import io.github.rin_da.ucsynews.presentation.abstract.model.People
 import io.github.rin_da.ucsynews.presentation.abstract.model.Post
@@ -18,6 +18,7 @@ import javax.inject.Inject
  */
 
 class RemoteSource : RemoteBaseSource {
+    @Inject lateinit var sharedPref: SharedPreferences
 
     @Inject constructor() {
 
@@ -47,14 +48,40 @@ class RemoteSource : RemoteBaseSource {
         }
     }
 
+    fun saveUserPreferences(uuid: String) {
+        val editor = sharedPref.edit()
+        editor.putString(USER, uuid)
+        editor.apply()
+    }
+
     override fun addPeopleIfNotExists(people: People): Completable {
         val ref = FirebaseDatabase.getInstance().reference.child(PEOPLE).child(people.uid)
         return isValueExists(ref, people).flatMapCompletable { boolean ->
-            Log.d("data", boolean.toString())
             if (boolean) {
                 return@flatMapCompletable Completable.create { e -> e.onComplete() }
             } else {
-                return@flatMapCompletable addEvent(query = ref, value = people)
+                return@flatMapCompletable Completable.create { emitter ->
+                    val baseRef = FirebaseDatabase.getInstance().reference
+                    val userRef = FirebaseDatabase.getInstance().reference.child(USERS).child(people.uid).push()
+                    val values = mutableMapOf<String, Any>()
+                    values["people/${people.uid}"] = people
+                    values["$USERS/${people.uid}/post/0"] = false
+                    e {
+                        values.toString()
+                    }
+                    baseRef.updateChildren(values, DatabaseReference.CompletionListener { databaseError, databaseReference ->
+                        if (databaseError != null) {
+                            if (databaseError.toException() != null) {
+                                emitter.onError(databaseError.toException())
+                            }
+                        } else {
+                            saveUserPreferences(userRef.key)
+                            emitter.onComplete()
+
+                        }
+                    })
+
+                }
             }
         }
     }

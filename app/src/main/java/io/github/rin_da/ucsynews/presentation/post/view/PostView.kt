@@ -22,7 +22,6 @@ class PostView(var presenter: PostPresenter) : AnkoComponent<PostActivity>, Post
         context.toast("Failed")
     }
 
-
     lateinit var mEdit: EditText
     lateinit var context: Context
 
