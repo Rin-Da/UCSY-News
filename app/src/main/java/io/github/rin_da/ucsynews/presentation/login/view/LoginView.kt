@@ -18,7 +18,6 @@ import org.jetbrains.anko.*
 class LoginView(var ankoActivity: LoginActivity) : AnkoComponent<LoginActivity> {
 
 
-
     lateinit var error_text: TextView
     lateinit var container: ViewGroup
     lateinit var progress: ProgressBar
@@ -37,12 +36,14 @@ class LoginView(var ankoActivity: LoginActivity) : AnkoComponent<LoginActivity> 
                     }
                     appCompatImageView {
                         imageResource = R.drawable.ic_sad
+                        setColorFilter(colorOf(R.color.yellow))
                     }.lparams(width = dp(intOf(R.integer.login_error_dimens)), height = dp(intOf(R.integer.login_error_dimens))) {
 
                     }
                     error_text = textView {
                         setRegularFont()
                         gravity = Gravity.CENTER
+                        setTextColor(colorOf(android.R.color.white))
                     }.lparams(width = dp(intOf(R.integer.login_error_text_width)), height = wrapContent) {
                         topMargin = dp(intOf(R.integer.login_error_text_margin))
                     }

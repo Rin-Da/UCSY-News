@@ -1,6 +1,7 @@
 package io.github.rin_da.ucsynews.di.components
 
 import android.content.Context
+import android.content.SharedPreferences
 import dagger.Component
 import io.github.rin_da.ucsynews.data.source.DataBaseSource
 import io.github.rin_da.ucsynews.di.modules.ApplicationModule
@@ -15,6 +16,7 @@ import javax.inject.Singleton
 interface ApplicationComponent {
     fun context(): Context
     fun dataSource(): DataBaseSource
+    fun shared(): SharedPreferences
     fun inject(activity: BaseActivity)
 
 }

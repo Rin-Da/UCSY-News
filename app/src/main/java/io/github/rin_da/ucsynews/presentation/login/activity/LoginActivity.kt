@@ -7,6 +7,7 @@ import com.firebase.ui.auth.ui.ResultCodes
 import com.google.firebase.auth.FirebaseAuth
 import io.github.rin_da.ucsynews.R
 import io.github.rin_da.ucsynews.data.source.DataBaseSource
+import io.github.rin_da.ucsynews.di.components.DaggerDataComponent
 import io.github.rin_da.ucsynews.presentation.abstract.model.People
 import io.github.rin_da.ucsynews.presentation.base.activity.BaseActivity
 import io.github.rin_da.ucsynews.presentation.base.ui.isNetworkConnected
@@ -31,7 +32,7 @@ class LoginActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         view.setContentView(this)
-
+        DaggerDataComponent.builder().activityModule(activity()).applicationComponent(applicationComponent).build().inject(this)
         if (FirebaseAuth.getInstance().currentUser == null) {
             if (isNetworkConnected()) {
                 login()
@@ -39,7 +40,23 @@ class LoginActivity : BaseActivity() {
                 view.setText(getString(R.string.no_connection))
             }
         } else {
-            go2Test()
+            if (isNetworkConnected()) {
+                if (source.getUser() == null) {
+                    source.addUserIfExists(People(uid = FirebaseAuth.getInstance().currentUser!!.uid, userName = FirebaseAuth.getInstance().currentUser!!.displayName!!)).subscribe(CompletableSubscriber())
+                } else {
+                    go2Test()
+                    finish()
+                }
+            } else {
+                if (source.getUser() != null) {
+                    go2Test()
+                    finish()
+                } else {
+                    view.setText(getString(R.string.no_connection))
+                }
+
+            }
+
         }
     }
 
@@ -53,7 +70,7 @@ class LoginActivity : BaseActivity() {
                 AuthUI.getInstance().createSignInIntentBuilder().setProviders(Arrays.asList(AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build(),
                         AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build(),
                         AuthUI.IdpConfig.Builder(AuthUI.FACEBOOK_PROVIDER).build(),
-                        AuthUI.IdpConfig.Builder(AuthUI.TWITTER_PROVIDER).build())).setIsSmartLockEnabled(true).build(),
+                        AuthUI.IdpConfig.Builder(AuthUI.TWITTER_PROVIDER).build())).setIsSmartLockEnabled(false).build(),
                 RC_SIGN_IN)
     }
 
@@ -66,6 +83,7 @@ class LoginActivity : BaseActivity() {
             }
             if (resultCode == RESULT_CANCELED) {
                 view.setText(getString(R.string.no_connection))
+                FirebaseAuth.getInstance().signOut()
                 return
             }
             if (resultCode == ResultCodes.RESULT_NO_NETWORK) {
@@ -84,11 +102,11 @@ class LoginActivity : BaseActivity() {
     inner class CompletableSubscriber : CompletableObserver {
         override fun onComplete() {
             go2Test()
+            finish()
         }
 
         override fun onError(e: Throwable?) {
             view.setText(getString(R.string.no_connection))
-            FirebaseAuth.getInstance().signOut()
         }
 
         override fun onSubscribe(d: Disposable?) {

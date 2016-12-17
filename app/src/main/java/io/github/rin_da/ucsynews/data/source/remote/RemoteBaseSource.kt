@@ -1,4 +1,4 @@
-package io.github.rin_da.ucsynews.data.source
+package io.github.rin_da.ucsynews.data.source.local
 
 import io.github.rin_da.ucsynews.data.source.base.BaseSource
 import io.github.rin_da.ucsynews.presentation.abstract.model.People
@@ -9,8 +9,11 @@ import io.reactivex.Completable
  * Created by user on 12/13/16.
  */
 
-abstract  class DataBaseSource:BaseSource{
-    abstract fun addUserIfExists(people: People):Completable
-    abstract fun post(post:Post,uuid:String):Completable
-    abstract fun getUser():String?
+abstract class RemoteBaseSource : BaseSource {
+
+
+    abstract fun addPeopleIfNotExists(people: People): Completable
+
+    abstract fun post(post: Post,uuid:String): Completable
+
 }
